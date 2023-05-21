@@ -1,7 +1,7 @@
 " Plugin Name: subby.vim
 " Description: inline buffer substitute in vim
 " Author: Ari Archer <ari.web.xyz@gmail.com>
-" Version: 1.0.0
+" Version: 1.1.0
 " License: GPLv3
 " URL: https://ari-web.xyz/gh/subby.vim
 
@@ -36,7 +36,7 @@ function! s:Subby()
     let word = s:SubbyGetWord()
 
     for [key, val] in items(g:subby)
-        let pattern = '\V' . escape(g:subby_delim . key, '\')
+        let pattern = '\V' . escape(g:subby_delim . key, '\') . '\C'
 
         if word =~ pattern
             let s = substitute(word, pattern, val, '')
